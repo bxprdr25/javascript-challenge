@@ -1,0 +1,77 @@
+
+/* body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000;
+} */
+
+p {
+  position: relative;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: 2em;
+  letter-spacing: 4px;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgb(128, 24, 24), #fff, rgb(89, 58, 173));
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 3s linear 5;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+  text-align:center;
+}
+
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
+}
+
+.grid-container{
+  height: 100%;
+  display: grid;
+  grid-template-columns: 3fr 2fr 2fr 1fr 1fr 3fr;
+  grid-template-rows: 1fr 10fr 30fr 8fr;
+  grid-template-areas: 
+  "u u u h h h"
+  "u u u m m m"
+  "u u u t t t"
+  "f f f t t t";
+
+}
+
+.ufo-ships{
+  grid-area: u;
+  background-image: url(../images/ufo-ships.jpg);
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.header{
+  grid-area: h;
+
+}
+
+.footer{
+  grid-area: f;
+
+}
+
+.menu{
+  grid-area: m;
+
+}
+
+.table{
+  grid-area: t;
+  background-color:white;
+
+}
