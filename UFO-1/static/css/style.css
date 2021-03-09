@@ -1,13 +1,13 @@
 
-/* body {
+body {
   margin: 0;
   padding: 0;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #000;
-} */
+  background-color: #2b3e50;
+}
 
 p {
   position: relative;
@@ -16,13 +16,15 @@ p {
   font-size: 2em;
   letter-spacing: 4px;
   overflow: hidden;
-  background: linear-gradient(90deg, rgb(128, 24, 24), #fff, rgb(89, 58, 173));
+  background: linear-gradient(90deg, rgb(128, 24, 24), black, rgb(35, 21, 160));
   background-repeat: no-repeat;
   background-size: 80%;
   animation: animate 3s linear 5;
   -webkit-background-clip: text;
   -webkit-text-fill-color: rgba(255, 255, 255, 0);
-  text-align:center;
+  text-align:center; 
+  vertical-align: middle;
+  margin-top: 7%;
 }
 
 @keyframes animate {
@@ -37,22 +39,37 @@ p {
 .grid-container{
   height: 100%;
   display: grid;
-  grid-template-columns: 3fr 2fr 2fr 1fr 1fr 3fr;
-  grid-template-rows: 1fr 10fr 30fr 8fr;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-rows: 1fr auto auto 1fr 1fr;
+  grid-gap: 5px;
   grid-template-areas: 
-  "u u u h h h"
-  "u u u m m m"
-  "u u u t t t"
-  "f f f t t t";
+  "h h h h h h"
+  "m m m m m m"
+  "t t t t t t"
+  "t t t t t t"
+  "f f f f f f";
 
+}
+
+.grid-container > div {
+  cursor: pointer;
+  height: 400px;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-image: url(../images/ufo-ships.jpg);
+  background-repeat: no-repeat;
+  
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .ufo-ships{
   grid-area: u;
-  background-image: url(../images/ufo-ships.jpg);
-  background-size:cover;
-  background-repeat: no-repeat;
-  background-position: center;
+
 }
 
 .header{
@@ -72,6 +89,40 @@ p {
 
 .table{
   grid-area: t;
-  background-color:white;
+  min-width: 70px;
+  position: static;
+  overflow: auto;
+  margin-bottom: 0%;
 
+}
+
+table{
+  border-collapse: collapse; 
+  width: 100%;
+  margin: 0%;
+}
+
+table th{
+  text-align: center;
+  padding: 8px 16px;
+  position: sticky;
+  overflow-y: auto;
+  top: 0;
+  color: white;
+  background-color: gray;
+  border: 1px solid black;
+}
+
+#ufo-table th{
+  position: sticky;
+
+}
+
+.filters .panel-body {
+  padding: 0;
+}
+
+.filters {
+  margin-top: 106.5px;
+  position: absolute;
 }
