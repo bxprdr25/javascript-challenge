@@ -5,8 +5,8 @@ body {
   /* display: flex; */
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #2b3e50;
+  /* height: 80px; */
+  background-color:  #1b3146;
 }
 
 p {
@@ -16,44 +16,29 @@ p {
   font-size: 2em;
   letter-spacing: 4px;
   overflow: hidden;
-  background: linear-gradient(90deg, rgb(128, 24, 24), black, rgb(35, 21, 160));
-  background-repeat: no-repeat;
-  background-size: 80%;
-  animation: animate 3s linear 5;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: rgba(255, 255, 255, 0);
-  text-align:center; 
-  vertical-align: middle;
-  margin-top: 7%;
+  
 }
 
-@keyframes animate {
-  0% {
-    background-position: -500%;
-  }
-  100% {
-    background-position: 500%;
-  }
-}
-
+/* define the grid container */
 .grid-container{
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  grid-template-rows: 1fr auto auto 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-rows: minmax(50px, auto);
   grid-gap: 5px;
   grid-template-areas: 
   "h h h h h h"
-  "m m m m m m"
-  "t t t t t t"
-  "t t t t t t"
+  "u u u u u u"
+  "t t t m m m"
+  "t t t m m m"
+  "t t t m m m"
   "f f f f f f";
-
 }
 
+/* Apply styling to all divs within the grid container */
 .grid-container > div {
   cursor: pointer;
-  height: 400px;
+  height: 450px;
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -67,41 +52,220 @@ p {
   text-align: center;
 }
 
-.ufo-ships{
-  grid-area: u;
-
+.grid-container > div:nth-child(1) {
+  height: 70px;
+  flex-direction: column;  
 }
 
+/* Apply specific height to the 3rd div in the grid container */
+.grid-container > div:nth-child(3) {
+  height: 70px;
+}
+
+.grid-container > div:nth-child(2) {
+  height: 700px;
+}
+
+/* apply styling to the header title such as subtle shadow effect */
+.header p{
+  align-content:unset;
+  text-align: left;
+  font-family: Ubuntu, sans-serif;
+  margin: 0%;
+  padding: 15px;
+  color: #e0dfdc;
+  /* background-color: #333; */
+  letter-spacing: .1em;
+  text-shadow: 
+    0 -1px 0 #fff, 
+    0 1px 0 #2e2e2e, 
+    0 2px 0 #2c2c2c, 
+    0 3px 0 #2a2a2a, 
+    0 4px 0 #282828, 
+    0 5px 0 #262626, 
+    0 6px 0 #242424, 
+    0 7px 0 #222, 
+    0 8px 0 #202020, 
+    0 9px 0 #1e1e1e, 
+    0 10px 0 #1c1c1c, 
+    0 11px 0 #1a1a1a, 
+    0 12px 0 #181818, 
+    0 13px 0 #161616, 
+    0 14px 0 #141414, 
+    0 15px 0 #121212, 
+    0 22px 30px rgba(0, 0, 0, 0.9);
+}
+
+/* Define the grid area for the header*/
 .header{
   grid-area: h;
+}
+
+/* Apply animation to the UFO in the header*/
+.header svg{
+  max-width: 90px;
+  max-height: 70px;
+  float: left;
+  z-index: 10;
+  animation-duration: 3s;
+  animation-name: goRight;
+  animation-iteration-count: 2;
 
 }
 
+/* Keyframe which defines the specific animation for the UFO in the header*/
+@-webkit-keyframes goRight {
+  from {
+    -webkit-transform: translate(0,0);
+  }
+
+  to {
+    -webkit-transform: translate(1920px,0);
+  }
+}
+
+/* Define the grid area for the UFO div*/
+.ufo-ships{
+  grid-area: u;
+}
+
+/* Apply fade in and out to the text in the UFO div*/
+.ufo-ships span{ 
+  margin: 25px;
+  /* padding: 10px; */
+  height: 120px;   
+  font-weight: bold;
+  position: relative;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: 3em;
+  letter-spacing: 4px;
+  overflow: hidden;
+  background: linear-gradient(90deg, black, black, black);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 3s linear 2;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+  display: inherit;
+}
+
+/* Keyframe which defines the specific animation for the text in the UFO div*/
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
+}
+
+/* Position the SVG that has an alien being taken*/
+.ufo-ships svg{
+  float: right;
+  height:55%;
+  padding-left: 5%;
+  
+}
+
+/* Animate the alien being taken SVG*/
+#ship-circles, #space-top{
+  animation: ship-circles  2s linear 3;
+  transform-origin: 50% 50%;
+  transform-style:preserve-3d;
+}
+
+/* Keyframe which defines the specific animation for the alien being taken svg*/
+@keyframes ship-circles {
+  100% { 
+    -webkit-transform: rotate(30deg); transform:rotate(30deg);
+  }
+}
+
+/* Animate the alien disappearing in the alien being taken SVG*/
+#alien-1{
+  animation: alien-1  2s linear 3;
+  transform-origin: 50% 50%;
+  transform-style:preserve-3d;
+}
+
+/* Keyframe which defines the specific animation for the alien disappearing in the alien being taken svg*/
+@keyframes alien-1 {
+  from{
+    transform: rotateX(0deg);
+  }
+
+  to{
+    transform: rotateX(90deg)
+  }
+}
+
+/* Animate the beams-rays in the alien being taken SVG*/
+#beam-rays{
+  animation: beam-rays  2s linear 3;
+  transform-origin: 50% 50%;
+  /* transform-origin: top; */
+  transform-style:preserve-3d;
+}
+
+/* Keyframe which defines the specific animation for the beams-rays in the alien being taken svg*/
+@keyframes beam-rays {
+  from{
+    transform:rotateY(0deg);
+  }
+
+  to{
+    transform:rotateY(90deg);
+  }
+}
+
+/* Define the grid area for the footer*/
 .footer{
   grid-area: f;
-
+  min-width: 0%;
+  overflow: hidden;
 }
 
+/* Position the text appearing in the footer*/
+.footer p{
+  align-content:unset;
+  text-align: left;
+  font-family: Ubuntu, sans-serif;
+  margin: 0%;
+  padding: 15px;
+  position: absolute;
+}
+
+/* Position the SVG appearing in the footer */
+.footer svg{
+  top: 20%;
+  height: 105%;
+  width: 166%;
+  float: right;
+}
+
+/* Define the grid area for the menu (Filter Search)*/
 .menu{
   grid-area: m;
-
 }
 
+/* Define the grid area for the table*/
 .table{
   grid-area: t;
   min-width: 70px;
   position: static;
   overflow: auto;
   margin-bottom: 0%;
-
 }
 
+/* Style the table */
 table{
   border-collapse: collapse; 
   width: 100%;
   margin: 0%;
 }
 
+/* Style the table headings */
 table th{
   text-align: center;
   padding: 8px 16px;
@@ -110,18 +274,20 @@ table th{
   top: 0;
   color: white;
   background-color: gray;
-  border: 1px solid black;
+  border: 1px solid rgb(61, 3, 3);
 }
 
-#ufo-table th{
+/* Lock the table headings so they are always showing when scrolling within the table container */
+#ufo-table{
   position: sticky;
-
 }
 
+/* Remove the padding from the filter search */
 .filters .panel-body {
   padding: 0;
 }
 
+/* position the filters within the menu grid(container) */
 .filters {
   margin-top: 106.5px;
   position: absolute;
